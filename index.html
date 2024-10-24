@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Najłatwiejsze postacie LOL</title>
+    <link rel="icon" type="image/x-icon" href="im/lol.png">
+    <meta name="keywords" content="LOL, League of Legends, poradnik lol">
+</head>
+<body class="fade-in">
+
+    <div class="sidenav">
+        <ul>
+            <h1>Menu</h1>
+            <li><a href="TOP.html" class="link">
+                <img src="im/top.png" alt="TOP">
+                <span>TOP</span>
+            </a></li>
+            <li><a href="JUNGLE.html" class="link">
+                <img src="im/jg.png" alt="JUNGLE">
+                <span>JUNGLE</span>
+            </a></li>
+            <li><a href="MID.html" class="link">
+                <img src="im/mid.png" alt="MID">
+                <span>MID</span>
+            </a></li>
+            <li><a href="BOT.html" class="link">
+                <img src="im/bot.png" alt="BOTTOM">
+                <span>BOTTOM</span>
+            </a></li>
+            <li><a href="SUP.html" class="link">
+                <img src="im/sup.png" alt="SUPPORT">
+                <span>SUPPORT</span>
+            </a></li>
+            <li>
+                <a href="#" id="music-button" class="link">
+                    <img src="im/nuta.png" alt="Włącz muzykę" class="music-icon">
+                    <span>MUZA</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="music-notes-container"></div>
+
+    <script>
+    const musicNotesContainer = document.getElementById('music-notes-container');
+    const noteImages = ['im/note1.png', 'im/note2.png', 'im/note3.png', 'im/note4.png']; // Ścieżki do obrazków nutek
+    
+    function createMusicNote() {
+        const img = document.createElement('img');
+        img.src = noteImages[Math.floor(Math.random() * noteImages.length)]; // Wybieranie losowego obrazka
+        img.classList.add('music-note');
+        
+        // Ustawienie losowej pozycji startowej
+        img.style.left = Math.random() * 100 + 'vw'; // Losowa pozycja horyzontalna
+        img.style.animationDuration = Math.random() * 3 + 2 + 's'; // Losowa prędkość spadania
+    
+        musicNotesContainer.appendChild(img);
+    
+        // Usuń nutkę, gdy skończy animację
+        setTimeout(() => {
+            img.remove();
+        }, 5000); // 5 sekund odpowiada animacji
+    }
+    
+    // Funkcje odtwarzania i zatrzymywania muzyki
+    let audio = new Audio('im/pif.mp3'); // Zmień na ścieżkę do pliku muzycznego
+
+    function playMusic() {
+        audio.play();
+    }
+
+    function stopMusic() {
+        audio.pause();
+        audio.currentTime = 0; // Zresetuj odtwarzanie na początek
+    }
+
+    // Wywołuj nutki co 500 ms
+    let musicPlaying = false;
+    let noteInterval;
+    
+    document.getElementById('music-button').addEventListener('click', function(e) {
+        e.preventDefault(); // Aby nie ładowało się z powrotem na górę strony
+
+        if (!musicPlaying) {
+            noteInterval = setInterval(createMusicNote, 200);
+            playMusic();
+            musicPlaying = true;
+        } else {
+            clearInterval(noteInterval);
+            stopMusic();
+            musicPlaying = false;
+        }
+    });
+    </script>
+
+    <div class="content">
+        <h2>Najłatwiejsze postacie na każdą linie LOL</h2>
+        <p>xd</p>
+    </div>
+
+    <div class="footer">
+        <h1>Autor: Maciej i Maks</h1>
+        <p id="demo"></p>
+
+        <script>
+            document.getElementById("demo").innerHTML =
+            "Szerokość okna: " + window.innerWidth + "px<br>" +
+            "Wysokość okna: " + window.innerHeight + "px";
+        </script>
+    </div>
+
+    <script>
+    document.querySelectorAll('.link').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            document.body.classList.add('fade-out'); // Uruchom animację
+
+            // Natychmiastowa nawigacja do nowej strony (bez czekania na koniec animacji)
+            window.location.href = link.getAttribute('href');
+        });
+    });
+    
+    // Animacja fade-in przy załadowaniu strony
+    window.onload = function() {
+        document.body.classList.add('active');
+    };
+    </script>
+
+</body>
+</html>

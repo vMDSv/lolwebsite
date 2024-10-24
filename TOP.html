@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Top</title>
+    <link rel="icon" type="image/x-icon" href="im/lol.png">
+    <meta name="keywords" content="LOL, League of Legends, poradnik lol">
+
+    <style>
+        /* Stylizacja dla sekcji z dwoma kolumnami */
+        .content {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .garen-section {
+            text-align: center;
+            width: 48%; /* Połowa szerokości dla lewej i prawej kolumny */
+        }
+    </style>
+</head>
+<body class="fade-in">
+
+    <div class="sidenav">
+        <ul>
+            <h1>Menu</h1>
+            <li>
+                <a href="index.html" class="link">
+                  <img src="im/lol.png" alt="MAIN">
+                  <span>MAIN</span>
+                </a>
+            </li>
+            <li>
+                <a href="JUNGLE.html" class="link">
+                  <img src="im/jg.png" alt="JUNGLE">
+                  <span>JUNGLE</span>
+                </a>
+            </li>
+            <li>
+                <a href="MID.html" class="link">
+                  <img src="im/mid.png" alt="MID">
+                  <span>MID</span>
+                </a>
+            </li>
+            <li>
+                <a href="BOT.html" class="link">
+                  <img src="im/bot.png" alt="BOTTOM">
+                  <span>BOTTOM</span>
+                </a>
+            </li>
+            <li>
+                <a href="SUP.html" class="link">
+                  <img src="im/sup.png" alt="SUPPORT">
+                  <span>SUPPORT</span>
+                </a>
+				
+			</li>
+			<li>
+                <a href="#" id="music-button" class="link">
+                    <img src="im/nuta.png" alt="Włącz muzykę" class="music-icon">
+                    <span>MUZA</span>
+                </a>
+            </li>
+		</ul>
+    </div>
+
+	<div id="music-notes-container"></div>
+    
+    <div class="content">
+        <!-- Lewa kolumna: Garen i umiejętności -->
+        <div class="garen-section">
+            <h1> <img src="im/garen.png" alt="GAREN" height="500px" width="450px"></h1>
+
+            <p>
+                <img src="im/garenp.png" alt="GARENP" height="75px" width="75px" class="skill-icon" data-text="Opis umiejętności GARENP" data-target="left-description"> &nbsp;
+                <img src="im/garenq.png" alt="GARENQ" height="75px" width="75px" class="skill-icon" data-text="Opis umiejętności GARENQ" data-target="left-description"> &nbsp;
+                <img src="im/garenw.png" alt="GARENW" height="75px" width="75px" class="skill-icon" data-text="Opis umiejętności GARENW" data-target="left-description"> &nbsp;
+                <img src="im/garene.png" alt="GARENE" height="75px" width="75px" class="skill-icon" data-text="Opis umiejętności GARENE" data-target="left-description"> &nbsp;
+                <img src="im/garenr.png" alt="GARENR" height="75px" width="75px" class="skill-icon" data-text="Opis umiejętności GARENR" data-target="left-description">
+            </p>
+
+            <!-- Kontener na dynamiczny opis pod obrazkami -->
+            <div id="left-description" class="skill-description"></div>
+        </div>
+
+        <!-- Prawa kolumna: Drugi Garen i umiejętności -->
+        <div class="garen-section">
+            <h1> <img src="im/garen.png" alt="GAREN" height="500px" width="450px"></h1>
+
+            <p>
+                <img src="im/garenp.png" alt="GARENP" height="75px" width="75px" class="skill-icon" data-text="Opis umiejętności GARENP" data-target="right-description"> &nbsp;
+                <img src="im/garenq.png" alt="GARENQ" height="75px" width="75px" class="skill-icon" data-text="Opis umiejętności GARENQ" data-target="right-description"> &nbsp;
+                <img src="im/garenw.png" alt="GARENW" height="75px" width="75px" class="skill-icon" data-text="Opis umiejętności GARENW" data-target="right-description"> &nbsp;
+                <img src="im/garene.png" alt="GARENE" height="75px" width="75px" class="skill-icon" data-text="Opis umiejętności GARENE" data-target="right-description"> &nbsp;
+                <img src="im/garenr.png" alt="GARENR" height="75px" width="75px" class="skill-icon" data-text="Opis umiejętności GARENR" data-target="right-description">
+            </p>
+
+            <!-- Kontener na dynamiczny opis pod obrazkami -->
+            <div id="right-description" class="skill-description"></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <h1>Autor: Maciej i Maks</h1>
+        <p id="demo"></p>
+    </div>
+
+    <script>
+        document.getElementById("demo").innerHTML =
+        "Szerokość okna: " + window.innerWidth + "px<br>" +
+        "Wysokość okna: " + window.innerHeight + "px";
+    
+        
+        const musicNotesContainer = document.getElementById('music-notes-container');
+        const noteImages = ['im/note1.png', 'im/note2.png', 'im/note3.png', 'im/note4.png']; // Ścieżki do obrazków nutek
+        
+        function createMusicNote() {
+            const img = document.createElement('img');
+            img.src = noteImages[Math.floor(Math.random() * noteImages.length)]; // Wybieranie losowego obrazka
+            img.classList.add('music-note');
+            
+            // Ustawienie losowej pozycji startowej
+            img.style.left = Math.random() * 100 + 'vw'; // Losowa pozycja horyzontalna
+            img.style.animationDuration = Math.random() * 3 + 2 + 's'; // Losowa prędkość spadania
+        
+            musicNotesContainer.appendChild(img);
+        
+            // Usuń nutkę, gdy skończy animację
+            setTimeout(() => {
+                img.remove();
+            }, 5000); // 5 sekund odpowiada animacji
+        }
+        
+        // Funkcje odtwarzania i zatrzymywania muzyki
+        let audio = new Audio('im/pif.mp3'); // Zmień na ścieżkę do pliku muzycznego
+    
+        function playMusic() {
+            audio.play();
+        }
+    
+        function stopMusic() {
+            audio.pause();
+        }
+    
+        // Wywołuj nutki co 500 ms
+        let musicPlaying = false;
+        let noteInterval;
+        
+        document.getElementById('music-button').addEventListener('click', function(e) {
+            e.preventDefault(); // Aby nie ładowało się z powrotem na górę strony
+    
+            if (!musicPlaying) {
+                noteInterval = setInterval(createMusicNote, 200);
+                playMusic();
+                musicPlaying = true;
+            } else {
+                clearInterval(noteInterval);
+                stopMusic();
+                musicPlaying = false;
+            }
+        });
+        
+
+    
+        // Funkcja do dynamicznej zmiany tekstu przy kliknięciu na obrazki
+const skillIcons = document.querySelectorAll('.skill-icon');
+
+// Ukryj kontenery opisu na początku
+document.getElementById('left-description').style.display = 'none';
+document.getElementById('right-description').style.display = 'none';
+
+skillIcons.forEach(function(icon) {
+    // Gdy użytkownik klika na obrazek
+    icon.addEventListener('click', function() {
+        const text = icon.getAttribute('data-text');
+        const target = icon.getAttribute('data-target'); // Pobierz identyfikator kontenera opisu
+        const descriptionBox = document.getElementById(target); // Pobierz odpowiedni kontener opisu
+        let lastClickedIcon = document.querySelector('.' + target + '-active'); // Pobierz ostatnio klikniętą ikonę w tej sekcji
+
+        // Jeśli ta sama ikona została kliknięta dwa razy z rzędu, ukryj opis i dezaktywuj ikonę
+        if (lastClickedIcon === icon) {
+            descriptionBox.textContent = ''; // Usuń opis
+            descriptionBox.style.display = 'none'; // Ukryj kontener
+            icon.classList.remove('active'); // Usuń wyróżnienie
+            icon.classList.remove(target + '-active'); // Usuń oznaczenie aktywności w sekcji
+        } else {
+            descriptionBox.textContent = text; // Zmień tekst w kontenerze na opis
+            descriptionBox.style.display = 'block'; // Pokaż kontener
+
+            // Usuń aktywne wyróżnienie z poprzedniej ikonki w tej sekcji
+            if (lastClickedIcon) {
+                lastClickedIcon.classList.remove('active');
+                lastClickedIcon.classList.remove(target + '-active');
+            }
+
+            // Dodaj wyróżnienie do klikniętej ikonki
+            icon.classList.add('active');
+            icon.classList.add(target + '-active'); // Zaznacz aktywną ikonę w danej sekcji
+        }
+    });
+});
+
+        // Animacja fade-out przy kliknięciu w linki
+        document.querySelectorAll('.link').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.body.classList.add('fade-out'); // Uruchom animację
+                window.location.href = link.getAttribute('href');
+            });
+        });
+
+        // Animacja fade-in przy załadowaniu strony
+        window.onload = function() {
+            document.body.classList.add('active');
+        };
+    </script>
+
+</body>
+</html>

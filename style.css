@@ -1,0 +1,317 @@
+/* Style for the body*/
+
+
+body {
+
+  background-color: #5d5f61;
+}
+
+/* Style for the sidenav */
+.sidenav {
+    width: 60px; /* Domyślna szerokość dla zwiniętego sidenavu */
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #111; /* Ciemnoszare tło */
+    height: 100vh;
+    padding-top: 20px;
+    transition: width 0.3s ease; /* Animacja rozszerzania sidenavu */
+    overflow-x: hidden; /* Ukrycie przewijania w poziomie */
+    
+}
+
+.sidenav:hover {
+    width: 150px; /* Szerokość sidenavu po najechaniu */
+}
+
+.sidenav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidenav h1 {
+    text-align: center;
+    color: #333333; /* Ciemny szary */
+    font-size: 18px;
+    display: none; /* Ukrycie tytułu "Menu" domyślnie */
+}
+
+.sidenav:hover h1 {
+    display: block; /* Wyświetlanie tytułu "Menu" po wysunięciu sidenavu */
+}
+
+.sidenav li {
+    margin: 10px 0px;
+}
+
+.sidenav a {
+    text-decoration: none;
+    display: flex;
+    align-items: center; /* Wyśrodkowanie tekstu i obrazka w pionie */
+    color: #f1f1f1; /* Jasnoszary tekst */
+    padding: 10px;
+    transition: background-color 0.3s ease; /* Animacja zmiany tła */
+}
+
+.sidenav a:hover {
+    background-color: #1c1c1c; /* Zmiana tła po najechaniu */
+}
+
+.sidenav img {
+    width: 40px;
+    height: 40px;
+    filter: grayscale(90%); /* Skala szarości obrazka */
+    transition: filter 0.3s ease; /* Płynne przejście do koloru */
+}
+
+.sidenav a:hover img {
+    filter: grayscale(0%); /* Obrazek kolorowy po najechaniu */
+    transform: scale(1.2);
+}
+
+.sidenav span {
+    margin-left: 10px;
+    font-size: 14px;
+    display: none; /* Ukrycie opisu domyślnie */
+}
+
+.sidenav:hover span {
+    display: inline-block; /* Wyświetlenie opisu po wysunięciu sidenavu */
+    transform: scale(1.2);
+}
+
+.music-icon {
+    width: 40px; /* Zmień na odpowiedni rozmiar */
+    height: 40px;
+    transition: transform 0.3s ease;
+    
+}
+
+.music-icon:hover {
+    transform: scale(1.2); /* Powiększenie na hover */
+}
+
+
+/* Style for the content */
+.content {
+    margin-left: 170px;
+    padding: 20px;
+    background-color: #5d5f61; /* Białe tło dla treści */
+    color: #333333; /* Tekst w ciemnym szarym */
+}
+
+/* Style for the footer */
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #4d4d4d; /* Ciemnoszara stopka */
+    color: #f1f1f1; /* Jasnoszary tekst w stopce */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px; /* Padding na górze i na dole, mniejszy z boku */
+    z-index: 20;
+}
+
+.footer h1 {
+    margin: 0; /* Zmniejszenie marginesu */
+    flex-grow: 1; /* H1 zajmuje więcej miejsca */
+}
+
+.footer p {
+    margin: 0; /* Zmniejszenie marginesu */
+    text-align: left;
+    max-width: 300px; /* Możesz dostosować szerokość, aby uniknąć ucinania */
+    overflow: hidden; /* Ukryj nadmiarowy tekst */
+    text-overflow: ellipsis; /* Dodaj wielokropek, jeśli tekst jest zbyt długi */
+    white-space: nowrap; /* Zapobiega łamaniu tekstu */
+    transform: translateX(-10%);
+
+}
+
+@media screen and (max-width: 768px) {
+    .sidenav {
+        position: relative;
+        width: 100vw;  /* Pełna szerokość */
+        height: auto;
+        top: 0;
+        padding: 10px 0;
+        background-color: #111;
+        box-sizing: border-box;
+        transition: height 0.3s ease; /* Animacja rozszerzania sidenavu */
+    }
+
+    .sidenav h1 {
+        display: none; /* Ukryj napis "Menu" */
+    }
+    
+    .sidenav:hover {
+        width: 100vw; /* Szerokość sidenavu po najechaniu */
+        
+    }
+    
+    .sidenav ul {
+        display: flex;
+        justify-content: space-between; /* Równomierne rozłożenie elementów */
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .sidenav li {
+        flex: 1 1 auto; /* Elementy elastyczne, zajmują dostępne miejsce */
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        text-align: center;  /* Centrowanie zawartości */
+    }
+
+    .sidenav img {
+        width: 30px;  /* Jeszcze mniejsze obrazki */
+        height: 30px;
+    }
+
+    .sidenav a {
+        font-size: 12px;  /* Zmniejszony rozmiar czcionki */
+        padding: 0 5px;  /* Mniejsze odstępy między linkami */
+    }
+
+    .content {
+        margin-left: 0;
+        padding-top: 20px;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 625px) {
+    .sidenav h1 {
+        display: none; /* Ukryj napis "Menu" */
+    }
+
+    .sidenav ul {
+        justify-content: flex-start; /* Przesunięcie ikon w lewo */
+    }
+
+    .sidenav li {
+        margin-left: 5px; /* Mniejsze marginesy między ikonami */
+    }
+
+    .sidenav img {
+        width: 28px;  /* Mniejsze obrazki */
+        height: 28px;
+    }
+
+    .sidenav a {
+        font-size: 10px; /* Zmniejszony rozmiar czcionki */
+        padding: 3px;  /* Mniejsze odstępy między linkami */
+        height: 60px;  /* Dostosowanie wysokości */
+    }
+
+    .sidenav a:hover {
+        height: 70px; /* Wysokość po najechaniu */
+    }
+
+    .sidenav span {
+        font-size: 9px; /* Zmniejszenie tekstu opisu */
+    }
+}
+
+
+/* Dodajemy klasy dla animacji przejścia */
+.fade-out {
+    opacity: 1;
+    transition: opacity 0.6s
+    s ease-out;
+}
+
+.fade-out.active {
+    opacity: 0;
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.6s ease-in;
+}
+
+.fade-in.active {
+    opacity: 1;
+}
+
+  /* Dodanie obramowania do ikon umiejętności */
+  .skill-icon {
+    border: 2px solid #444; /* Domyślne obramowanie */
+    border-radius: 10px; /* Zaokrąglenie rogów */
+    transition: border 0.3s ease-in-out, transform 0.3s ease-in-out; /* Animacja obramowania i skalowania */
+}
+
+/* Efekt hover dla ikon umiejętności */
+.skill-icon:hover {
+    transform: scale(1.1); /* Powiększenie najechanej ikony */
+    border-color: #888; /* Zmiana koloru obramowania na hover */
+}
+
+/* Podświetlenie aktywnej ikonki */
+.skill-icon.active {
+    border-color: #FFD700; /* Złoty kolor obramowania dla aktywnej ikonki */
+    transform: scale(1.15); /* Większe powiększenie dla aktywnej ikony */
+}
+
+/* Kontener na opisy umiejętności poniżej Garena */
+.skill-description {
+    font-size: 15px;
+    margin-top: 20px;
+    padding: 10px;
+    border: 2px solid #FFD700;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    display: none; /* Ukryte na początku */
+    width: 450px;
+    height: 100px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto; /* Wyśrodkowanie */
+    word-wrap: break-word; /* Zawijanie długich słów, żeby nie wychodziły poza kontener */
+    overflow: visible; /* Kontener rośnie w miarę potrzeby */
+    height: auto; /* Automatyczna wysokość w zależności od ilości tekstu */
+}
+
+
+/* Pojawia się, gdy jest aktywna klasa */
+.skill-description.active {
+    display: inline-block; /* Pojawia się, gdy dodamy klasę "active" */
+}
+
+#music-notes-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Niech nie wpływają na interakcję ze stroną */
+    z-index: 9999; /* Zawsze na wierzchu */
+}
+
+.music-note {
+    position: absolute;
+    width: 70px; /* Rozmiar obrazka */
+    animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100px) rotate(0deg); /* Start nad ekranem */
+        opacity: 1;
+    }
+    
+    100% {
+        transform: translateY(100vh) rotate(50deg) ; /* Koniec pod ekranem */
+        opacity: 0;
+    }
+}
