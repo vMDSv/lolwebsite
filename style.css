@@ -91,7 +91,6 @@ body {
     transform: scale(1.2); /* Powiększenie na hover */
 }
 
-
 /* Style for the content */
 .content {
     margin-left: 170px;
@@ -287,7 +286,10 @@ body {
 .skill-description.active {
     display: inline-block; /* Pojawia się, gdy dodamy klasę "active" */
 }
-
+.icon{
+	border-radius: 10px; /* Zaokrąglenie rogów */
+}
+	
 #music-notes-container {
     position: fixed;
     top: 0;
@@ -315,3 +317,4 @@ body {
         opacity: 0;
     }
 }
+

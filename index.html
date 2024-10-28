@@ -69,11 +69,12 @@
 
     function playMusic() {
         audio.play();
-    }
+   	audio.loop = true; 
+   }
 
     function stopMusic() {
         audio.pause();
-        audio.currentTime = 0; // Zresetuj odtwarzanie na początek
+       
     }
 
     // Wywołuj nutki co 500 ms
